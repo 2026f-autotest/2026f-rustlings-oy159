@@ -2,8 +2,8 @@
   "schema": 1,
   "courseId": 2084,
   "repository": "2026f-autotest/2026f-rustlings-oy159",
-  "commit": "3d0a3a4cf72defcf28565ee7794642eab7855b91",
-  "score": 56,
+  "commit": "4142d97b2c8380c5f93ee8859720e76e7074dee5",
+  "score": 58,
   "totalScore": 110,
   "exercises": [
     {
@@ -401,16 +401,16 @@
     {
       "name": "generics1",
       "max": 1,
-      "score": 0,
-      "status": "fail",
-      "exitCode": 1
+      "score": 1,
+      "status": "pass",
+      "exitCode": 0
     },
     {
       "name": "generics2",
       "max": 1,
-      "score": 0,
-      "status": "fail",
-      "exitCode": 1
+      "score": 1,
+      "status": "pass",
+      "exitCode": 0
     },
     {
       "name": "traits1",
@@ -778,9 +778,9 @@
     }
   ],
   "student": "oy159",
-  "runId": "35086377789",
+  "runId": "35089328949",
   "runAttempt": "1",
   "upload": {
-    "status": "accepted"
+    "status": "pending"
   }
 }
