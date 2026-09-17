@@ -2,7 +2,6 @@
 	single linked list merge
 	This problem requires you to merge two ordered singly linked lists into one ordered singly linked list
 */
-// I AM NOT DONE
 
 use std::fmt::{self, Display, Formatter};
 use std::ptr::NonNull;
@@ -43,6 +42,9 @@ impl<T> LinkedList<T> {
             end: None,
         }
     }
+}
+
+impl<T: PartialOrd + Clone> LinkedList<T> {
 
     pub fn add(&mut self, obj: T) {
         let mut node = Box::new(Node::new(obj));
@@ -69,14 +71,74 @@ impl<T> LinkedList<T> {
             },
         }
     }
+
+    fn push_node(&mut self, node_ptr: NonNull<Node<T>>) {
+        match self.end {
+            None => {
+                self.start = Some(node_ptr);
+                self.end = Some(node_ptr);
+            }
+            Some(end_ptr) => {
+                unsafe { (*end_ptr.as_ptr()).next = Some(node_ptr) };
+                self.end = Some(node_ptr);
+            }
+        }
+        self.length += 1;
+    }
+
+    fn append_list(&mut self, other: &mut LinkedList<T>) {
+        if other.start.is_none() {
+            return;
+        }
+
+        match self.end {
+            Some(end_ptr) => unsafe {
+                (*end_ptr.as_ptr()).next = other.start;
+            },
+
+            None => {
+                self.start = other.start;
+            }
+        }
+
+        self.end = other.end;
+        self.length += other.length;
+
+        other.start = None;
+        other.end = None;
+        other.length = 0;
+    }
+
 	pub fn merge(list_a:LinkedList<T>,list_b:LinkedList<T>) -> Self
 	{
-		//TODO
-		Self {
-            length: 0,
-            start: None,
-            end: None,
+		let mut ans = LinkedList::new();
+        let mut a = list_a;
+        let mut b = list_b;
+        while a.length > 0 && b.length > 0 {
+            let a_val = unsafe { &(*a.start.unwrap().as_ptr()).val };
+            let b_val = unsafe { &(*b.start.unwrap().as_ptr()).val };
+
+            if a_val < b_val {
+                ans.push_node(a.start.unwrap());
+                a.start = unsafe { (*a.start.unwrap().as_ptr()).next };
+                a.length -= 1;
+            }else {
+                ans.push_node(b.start.unwrap());
+                b.start = unsafe { (*b.start.unwrap().as_ptr()).next };
+                b.length -= 1;
+            }
         }
+
+        if a.length > 0 {
+            ans.append_list(&mut a);
+        }
+
+        if b.length > 0 {
+            ans.append_list(&mut b);
+        }
+
+        ans
+
 	}
 }
 
