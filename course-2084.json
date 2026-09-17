@@ -2,8 +2,8 @@
   "schema": 1,
   "courseId": 2084,
   "repository": "2026f-autotest/2026f-rustlings-oy159",
-  "commit": "6fb0c6a85d04cb93e053cc42518e5124c21a63f0",
-  "score": 76,
+  "commit": "56a7bbdde8676fbf95acf7758128314799ab5da0",
+  "score": 80,
   "totalScore": 110,
   "exercises": [
     {
@@ -541,30 +541,30 @@
     {
       "name": "box1",
       "max": 1,
-      "score": 0,
-      "status": "fail",
-      "exitCode": 1
+      "score": 1,
+      "status": "pass",
+      "exitCode": 0
     },
     {
       "name": "rc1",
       "max": 1,
-      "score": 0,
-      "status": "fail",
-      "exitCode": 1
+      "score": 1,
+      "status": "pass",
+      "exitCode": 0
     },
     {
       "name": "arc1",
       "max": 1,
-      "score": 0,
-      "status": "fail",
-      "exitCode": 1
+      "score": 1,
+      "status": "pass",
+      "exitCode": 0
     },
     {
       "name": "cow1",
       "max": 1,
-      "score": 0,
-      "status": "fail",
-      "exitCode": 1
+      "score": 1,
+      "status": "pass",
+      "exitCode": 0
     },
     {
       "name": "threads1",
@@ -778,9 +778,9 @@
     }
   ],
   "student": "oy159",
-  "runId": "35137909000",
+  "runId": "35193801562",
   "runAttempt": "1",
   "upload": {
-    "status": "accepted"
+    "status": "pending"
   }
 }
