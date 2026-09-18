@@ -1,8 +1,7 @@
 /*
 	queue
-	This question requires you to use queues to implement the functionality of the stac
+	This question requires you to use queues to implement the functionality of the stack
 */
-// I AM NOT DONE
 
 #[derive(Debug)]
 pub struct Queue<T> {
@@ -55,6 +54,7 @@ impl<T> Default for Queue<T> {
 pub struct myStack<T>
 {
 	//TODO
+    len: usize,
 	q1:Queue<T>,
 	q2:Queue<T>
 }
@@ -62,20 +62,29 @@ impl<T> myStack<T> {
     pub fn new() -> Self {
         Self {
 			//TODO
+            len: 0,
 			q1:Queue::<T>::new(),
 			q2:Queue::<T>::new()
         }
     }
     pub fn push(&mut self, elem: T) {
-        //TODO
+        self.len += 1;
+        self.q2.enqueue(elem);
+        while let Ok(elem) = self.q1.dequeue() {
+            self.q2.enqueue(elem);
+        }
+        std::mem::swap(&mut self.q1, &mut self.q2);
     }
     pub fn pop(&mut self) -> Result<T, &str> {
-        //TODO
-		Err("Stack is empty")
+        if self.len == 0 {
+            return Err("Stack is empty");
+        }
+        self.len -= 1;
+        self.q1.dequeue()
     }
     pub fn is_empty(&self) -> bool {
 		//TODO
-        true
+        self.len == 0
     }
 }
 
